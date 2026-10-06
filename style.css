@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0b111e; /* Deep space navy backdrop */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 4rem;
+  font-family: "Arial", sans-serif;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 20px;
+}
+
+#hour, #min, #sec, p {
+  font-size: 5rem;
+  font-family: "Arial", sans-serif;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: center;
+}
+
+.tens {
+  font-size: 2rem;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 3px;
+}
+
+#container {
+  width: 800px;
+  margin: auto;
+  color: white;
+  text-align: center;
+}
+
+#controls button {
+  box-shadow: 2px 2px rgb(255, 255, 255);
+  border-radius: 5px;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 18px 10px;
+  width: 180px;
+  margin: 10px;
+  outline: none;
+}
+
+#controls button:hover {
+  transition: 0.5s ease-in-out;
+  background-color: rgb(17, 17, 40);
+  border: 1px solid rgb(17, 17, 40);
+  color: white;
+}

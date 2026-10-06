@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Stopwatch</h1>
+  <div id="container">
+    <p>
+      <span id="hour">00</span>:<span id="min">00</span>:<span id="sec">00</span> 
+      <span class="tens" id="tens">00</span>
+    </p>
+    <div id="controls">
+      <button id="startbtn">Start</button>
+      <button id="stopbtn">Stop</button>
+      <button id="resetbtn">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function() {
+      var hour = 0, min = 0, sec = 0, tens = 0;
+      var appendhour = document.getElementById("hour");
+      var appendmin = document.getElementById("min");
+      var appendsec = document.getElementById("sec");
+      var appendtens = document.getElementById("tens");
+      var btnstart = document.getElementById("startbtn");
+      var btnstop = document.getElementById("stopbtn");
+      var btnreset = document.getElementById("resetbtn");
+      var interval;
+      var isRunning = false;
+
+      btnstart.onclick = function() {
+        if (!isRunning) {
+          isRunning = true;
+          interval = setInterval(startTimer, 10);
+        }
+      };
+
+      btnstop.onclick = function() {
+        if (isRunning) {
+          isRunning = false;
+          clearInterval(interval);
+        }
+      };
+
+      btnreset.onclick = function() {
+        isRunning = false;
+        clearInterval(interval);
+        tens = 0; sec = 0; min = 0; hour = 0;
+        appendtens.innerHTML = "00";
+        appendsec.innerHTML = "00";
+        appendmin.innerHTML = "00";
+        appendhour.innerHTML = "00";
+      };
+
+      function formatTime(value) {
+        return value < 10 ? "0" + value : value;
+      }
+
+      function startTimer() {
+        tens++;
+        if (tens <= 99) {
+          appendtens.innerHTML = formatTime(tens);
+        }
+        if (tens > 99) {
+          sec++;
+          tens = 0;
+          appendtens.innerHTML = "00";
+          appendsec.innerHTML = formatTime(sec);
+          if (sec > 59) {
+            min++;
+            sec = 0;
+            appendsec.innerHTML = "00";
+            appendmin.innerHTML = formatTime(min);
+            if (min > 59) {
+              hour++;
+              min = 0;
+              appendmin.innerHTML = "00";
+              if (hour <= 99) {
+                appendhour.innerHTML = formatTime(hour);
+              } else {
+                hour = 0;
+                appendhour.innerHTML = "00";
+              }
+            }
+          }
+        }
+      }
+    };
+  </script>
+</body>
+</html>
